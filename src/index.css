@@ -50,6 +50,7 @@ footer {
   width: 90%;
   height: 40px;
   margin-top: 2rem;
+  background-color: rgb(223, 2, 2);
 }
 
 footer > img{

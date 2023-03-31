@@ -1,15 +1,23 @@
-import { createContext } from "react";
+import { createContext, useContext, useState, memo } from "react";
 
-export const initialState = {theme: "", data: []}
+//export const initialState = {theme: "light", data: []}
+export const ContextGlobal = createContext();
 
-export const ContextGlobal = createContext(undefined);
+const ContextProvider = memo(({children}) => {
+    const [odontologo, setOdontologo] = useState();
 
-export const ContextProvider = ({ children }) => {
-  //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
-
-  return (
-    <ContextGlobal.Provider value={{}}>
-      {children}
-    </ContextGlobal.Provider>
-  );
-};
+    // const {imgState} = useState({
+    //     dorctorLogo: './images/doctor.jpg',
+    //     dhLogo:'./images/DH.png',
+    //     faceLogo: './images/ico-facebook.png',
+    //     whatsappLogo: './images/ico-whatsapp.png',
+    //     instaLogo: './images/ico-instagram.png',
+    // })
+    return (
+        <ContextGlobal.Provider value={{odontologo, setOdontologo}} >
+            {children}
+        </ContextGlobal.Provider>
+    )
+})
+export default ContextProvider;
+export const useContextGlobal = () => useContext(ContextGlobal)
