@@ -2,7 +2,6 @@
 import { useState } from "react";
 
 
-
 const Form = () => {
   //Aqui deberan implementar el form completo con sus validaciones
   const [info, setInfo] = useState({
@@ -14,9 +13,11 @@ const Form = () => {
 
   const handlerSubmit = (event) => {
     event.preventDefault();
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    let emailTest = emailRegex.test(info.email);
       if (
         info.nombre.length >= 5 &&
-        // info.email.length formato correcto &&
+        emailTest &&
         info.nombre[0] !== " "
       ) {
         setShow(true);

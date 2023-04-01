@@ -54,7 +54,7 @@ footer {
 }
 
 footer > img{
-  width: 200px;
+  width: 10px;
   margin: 0;
 }
 footer > p{
@@ -96,7 +96,7 @@ form{
 }
 
 table {
- border-collapse: collapse;
+    border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
     display: table;

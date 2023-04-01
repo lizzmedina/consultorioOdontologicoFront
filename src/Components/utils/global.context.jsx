@@ -1,20 +1,34 @@
-import { createContext, useContext, useState, memo } from "react";
+/* eslint-disable no-undef */
+import { createContext, useContext, useState, memo, useReducer } from "react";
 
-//export const initialState = {theme: "light", data: []}
+
 export const ContextGlobal = createContext();
+// export const initialState = {theme: "light", data: []};
+
+
+// const Theme = () => {
+//     const [state, dispatch] = useReducer(reducer, initialState);
+//     return (
+//       //Theme: {state.theme}
+//     0
+//     )
+// }
+
+// function reducer(state, action) {
+//     switch (action.type) {
+//       case 'toggleTheme':
+//         return { ...state, theme: state.theme === 'light' ? 'dark' : 'light' };
+//       default:
+//         return state;
+//     }
+//   }
+
+
 
 const ContextProvider = memo(({children}) => {
-    const [odontologo, setOdontologo] = useState();
-
-    // const {imgState} = useState({
-    //     dorctorLogo: './images/doctor.jpg',
-    //     dhLogo:'./images/DH.png',
-    //     faceLogo: './images/ico-facebook.png',
-    //     whatsappLogo: './images/ico-whatsapp.png',
-    //     instaLogo: './images/ico-instagram.png',
-    // })
+    
     return (
-        <ContextGlobal.Provider value={{odontologo, setOdontologo}} >
+        <ContextGlobal.Provider value={{}} >
             {children}
         </ContextGlobal.Provider>
     )
