@@ -15,13 +15,14 @@ function App() {
           <hr />
           <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="contact" element={<Contact/>}/>
-            <Route path="favoritos" element={<Favs/>}/>
-            <Route path="detail" element={<Detail/>}/>
+            <Route path="/contact" element={<Contact/>}/>
+            <Route path="/favoritos" element={<Favs/>}/>
+            <Route path="/detail/:id" element={<Detail/>}/>
             <Route path="*" element={<Navigate to= "NotFound"/>} /> 
           </Routes>
           <Footer/>
       </div>
+      
   );
 }
 

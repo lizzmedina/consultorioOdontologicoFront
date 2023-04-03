@@ -3,32 +3,27 @@ import { createContext, useContext, useState, memo, useReducer } from "react";
 
 
 export const ContextGlobal = createContext();
-// export const initialState = {theme: "light", data: []};
 
+const initialState = {theme: "light", data: []};
 
-// const Theme = () => {
-//     const [state, dispatch] = useReducer(reducer, initialState);
-//     return (
-//       //Theme: {state.theme}
-//     0
-//     )
-// }
-
-// function reducer(state, action) {
-//     switch (action.type) {
-//       case 'toggleTheme':
-//         return { ...state, theme: state.theme === 'light' ? 'dark' : 'light' };
-//       default:
-//         return state;
-//     }
-//   }
-
-
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'dark':
+      return { ...state, theme: state.theme === 'light' ? 'dark' : 'light' };
+    default:
+      return {theme: initialState.theme};
+  }
+}
 
 const ContextProvider = memo(({children}) => {
+    const [state, dispatch] = useReducer(reducer, initialState);
     
+    const theme = state.theme === 'dark' 
+    ? { backgroundColor: 'black', color: 'white' } 
+    : { backgroundColor: 'white', color: 'black' };
+
     return (
-        <ContextGlobal.Provider value={{}} >
+        <ContextGlobal.Provider value={{theme, state, dispatch}} >
             {children}
         </ContextGlobal.Provider>
     )
