@@ -122,21 +122,21 @@ tr:nth-child(even) {
 
 
 [data-base-theme="dark"] .App {
-  background-color: #2a9d8f;
+  background-color: #6f6f6f;
   color: antiquewhite;
 }
  
 [data-base-theme="dark"] .card {
-  background-color:  #e9c46a;
+  background-color:  #d8c89f;
 }
 
 [data-base-theme="dark"] nav {
-  background-color:  #e9c46a;
+  background-color:  #b7b7b7;
   color: bisque;
 }
 
 [data-base-theme="dark"] footer {
-  background-color: #e9c46a;
+  background-color: #b7b7b7;
 } 
 
 
