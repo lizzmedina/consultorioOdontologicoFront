@@ -16,7 +16,7 @@ const reducerTheme = (state, action) => {
 
 const ContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducerTheme, initialStateTheme);
-    const [odontoFavGuardados, setodOntoFavGuardados] = useState();
+    
 
     const [odontologos, setOdontologos] = useState([]);
 
@@ -33,8 +33,10 @@ const ContextProvider = ({children}) => {
 
     return (
         <ContextGlobal.Provider 
-          value={{theme, state, dispatch, odontologos, setOdontologos, odontoFavGuardados, setodOntoFavGuardados}} 
-        >
+          value={
+            {theme, state, dispatch, 
+              odontologos, setOdontologos}
+            } >
             {children}
         </ContextGlobal.Provider>
     )
