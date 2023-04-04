@@ -30,17 +30,14 @@ const ContextProvider = ({children}) => {
     }, [])
 
     useEffect(() => {
-    const tipeTheme = state.theme ? 'dark' : 'light';
+    const tipeTheme = state.theme ? 'light' : 'dark';
     localStorage.setItem('theme', tipeTheme);
     document.documentElement.setAttribute('data-base-theme', tipeTheme)
     }, [state.theme])
     
     return (
         <ContextGlobal.Provider 
-          value={
-            {state, dispatch, 
-              odontologos, setOdontologos}
-            } >
+          value={{state, dispatch, odontologos, setOdontologos}}>
             {children}
         </ContextGlobal.Provider>
     )
