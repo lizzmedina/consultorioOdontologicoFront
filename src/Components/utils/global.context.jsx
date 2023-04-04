@@ -29,9 +29,7 @@ const ContextProvider = ({children}) => {
       getOdontologos()
     }, [])
 
-    const theme = state.theme === 'dark' 
-    ? { backgroundColor: 'black', color: 'white' } 
-    : { backgroundColor: 'white', color: 'black' };
+    const theme = state.theme === 'dark'? { backgroundColor: 'black', color: 'white' } : { backgroundColor: 'white', color: 'black' };
 
     return (
         <ContextGlobal.Provider 

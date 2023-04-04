@@ -7,7 +7,8 @@ import { useParams, useNavigate } from "react-router-dom";
 const Detail = () => {
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
   const [odontologo, setOdontologo] = useState([]);
-  
+  let favoritos = localStorage.getItem('favorites');
+
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -21,7 +22,20 @@ const Detail = () => {
     getOdontologo()
   }, [])
 
-  
+  const addFav = (data)=>{
+    if (favoritos) {
+      let favoritosparsed = JSON.parse(favoritos);
+      favoritos = [...favoritosparsed, odontologo ];
+    }else {
+      favoritos = [odontologo];
+    }
+    // if(!favoritos.find(e => e.id == data.id )){
+    //   favoritos.push(data);
+    // }
+
+    localStorage.setItem('favorites', JSON.stringify(favoritos));
+    // Aqui iria la logica para agregar la Card en el localStorage
+  }
   return (
 
     <div>
@@ -35,6 +49,12 @@ const Detail = () => {
         <h4>{odontologo.phone}</h4>
         <h4>{odontologo.website}</h4>
       </div> 
+      <button
+          onClick= {addFav}
+          className="favButton"
+        >
+          Add fav ⭐
+        </button>
       <button onClick={() => navigate(-1)}>Go back</button>
     </div>
   )

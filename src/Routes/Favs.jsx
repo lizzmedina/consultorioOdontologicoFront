@@ -8,16 +8,16 @@ const Favs = () => {
   let favoritos = localStorage.getItem('favorites');
   let favoritosparsed = JSON.parse(favoritos);
     console.log(favoritosparsed);
-    console.log(favoritosparsed[0].name);
   return (
     <>
 
       <h1>Dentists Favs</h1>
         {/* este componente debe consumir los destacados del localStorage */}
-      {favoritosparsed.length && favoritosparsed.map(odont => (
-      <Card key={odont.id} data={odont} />))} 
+      <div className="card-grid">
+      {favoritosparsed.map((dentist, id) => 
+      <Card key={dentist.id} data={dentist} id={dentist.id} />)} 
       {/* Deberan renderizar una Card por cada uno de ellos */}
-
+      </div>
     </>
   );
 };
