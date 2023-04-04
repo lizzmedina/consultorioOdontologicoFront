@@ -1,23 +1,23 @@
 /* eslint-disable no-undef */
 import { createContext, useContext, useState, useReducer, useEffect } from "react";
 
-export const ContextGlobal = createContext();
+export const ContextGlobal = createContext(undefined);
 
-const initialStateTheme = {theme: "light", data: []};
+const initialStateTheme = {theme: localStorage.getItem('theme'), data: []};
 
 const reducerTheme = (state, action) => {
   switch (action.type) {
+    case 'light':
+      return { theme: false };
     case 'dark':
-      return { ...state, theme: state.theme === 'light' ? 'dark' : 'light' };
+      return {theme: true}
     default:
-      return {theme: initialStateTheme.theme};
+      return state;
   }
 }
-
 const ContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducerTheme, initialStateTheme);
     
-
     const [odontologos, setOdontologos] = useState([]);
 
     const getOdontologos = async() => {
@@ -29,12 +29,16 @@ const ContextProvider = ({children}) => {
       getOdontologos()
     }, [])
 
-    const theme = state.theme === 'dark'? { backgroundColor: 'black', color: 'white' } : { backgroundColor: 'white', color: 'black' };
-
+    useEffect(() => {
+    const tipeTheme = state.theme ? 'dark' : 'light';
+    localStorage.setItem('theme', tipeTheme);
+    document.documentElement.setAttribute('data-base-theme', tipeTheme)
+    }, [state.theme])
+    
     return (
         <ContextGlobal.Provider 
           value={
-            {theme, state, dispatch, 
+            {state, dispatch, 
               odontologos, setOdontologos}
             } >
             {children}

@@ -5,27 +5,33 @@ import { useContextGlobal } from './utils/global.context';
 
 const Navbar = () => {
   
-  const {dispatch, state} = useContextGlobal(); //invocar el metodo de showFav
-// cuando cliqueo en favoritos se active el metodo showFav.
+  const {dispatch, state} = useContextGlobal(); 
+  const theme = state.theme;
+
+  const handlerChangeTheme = () => {
+    if (theme) {
+      dispatch(
+        {type: 'light'
+      })
+    } else 
+    dispatch(
+      {type: 'dark'
+    })
+  }
   
 return (
-      <nav>
-      {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
+      <nav className='navbar'>
         <Link to="/"> DH Odonto </Link>
         <Link to="/"> Home </Link> 
         <Link to="/contact"> Contact </Link>
         <Link to="/favoritos"> Favoritos </Link> 
         
-        {/* BORRAR CUANDO FUNCIONE EL CAMBIO DE THEME */}
-        <hr />
-        <p>{state.theme}</p>
-        <hr />
         
       {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
       <button 
-        onClick={()=> dispatch({type: 'dark'})}
+        onClick={handlerChangeTheme}
       >
-        Change theme 🌒☀️
+        Change theme ☀️ 🌒
       </button>
     </nav>
   )

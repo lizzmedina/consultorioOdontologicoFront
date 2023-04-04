@@ -1,49 +1,29 @@
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useContextGlobal } from "../Components/utils/global.context";
 
 const Detail = () => {
-  const [odontologo, setOdontologo] = useState([]);
-  let favoritos = localStorage.getItem('favorites');
-
+ 
+  const {odontologos} = useContextGlobal();
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const getOdontologo = async() => {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-    const data = await res.json()
-    setOdontologo(data)
-  }
-  useEffect(()=>{
-    getOdontologo()
-  }, [])
-
-  const addFav = (data)=>{
-    if (favoritos) {
-      let favoritosparsed = JSON.parse(favoritos);
-      favoritos = [...favoritosparsed, odontologo ];
-    }else {
-      favoritos = [odontologo];
-    }
-    localStorage.setItem('favorites', JSON.stringify(favoritos));
-  }
+ const getIdOdonto =() => {
+  return odontologos.find(odontologo=> odontologo.id === parseInt(id))
+ }
+ const odontologoId = getIdOdonto();
+ 
   return (
-
     <div>
       <h1>Detail Dentist {id}</h1>
       <div className='detailCard'>
-        <h3>{odontologo.name}</h3>
-        <h4>{odontologo.email}</h4>
-        <h4>{odontologo.phone}</h4>
-        <h4>{odontologo.website}</h4>
+        <h3>{odontologoId.name}</h3>
+        <h4>{odontologoId.email}</h4>
+        <h4>{odontologoId.phone}</h4>
+        <h4>{odontologoId.website}</h4>
       </div> 
-      <button
-          onClick= {addFav}
-          className="favButton"
-        >
-          Add fav ⭐
-        </button>
       <button onClick={() => navigate(-1)}>Go back</button>
     </div>
   )
