@@ -1,32 +1,45 @@
 /* eslint-disable no-undef */
-import { createContext, useContext, useState, memo, useReducer } from "react";
-
+import { createContext, useContext, useState, useReducer, useEffect } from "react";
 
 export const ContextGlobal = createContext();
 
-const initialState = {theme: "light", data: []};
+const initialStateTheme = {theme: "light", data: []};
 
-const reducer = (state, action) => {
+const reducerTheme = (state, action) => {
   switch (action.type) {
     case 'dark':
       return { ...state, theme: state.theme === 'light' ? 'dark' : 'light' };
     default:
-      return {theme: initialState.theme};
+      return {theme: initialStateTheme.theme};
   }
 }
 
-const ContextProvider = memo(({children}) => {
-    const [state, dispatch] = useReducer(reducer, initialState);
-    
+const ContextProvider = ({children}) => {
+    const [state, dispatch] = useReducer(reducerTheme, initialStateTheme);
+    const [odontoFavGuardados, setodOntoFavGuardados] = useState();
+
+    const [odontologos, setOdontologos] = useState([]);
+
+    const getOdontologos = async() => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/users')
+    const data = await res.json()
+      setOdontologos(data)
+    }
+    useEffect(()=> {  
+      getOdontologos()
+    }, [])
+
     const theme = state.theme === 'dark' 
     ? { backgroundColor: 'black', color: 'white' } 
     : { backgroundColor: 'white', color: 'black' };
 
     return (
-        <ContextGlobal.Provider value={{theme, state, dispatch}} >
+        <ContextGlobal.Provider 
+          value={{theme, state, dispatch, odontologos, setOdontologos, odontoFavGuardados, setodOntoFavGuardados}} 
+        >
             {children}
         </ContextGlobal.Provider>
     )
-})
+}
 export default ContextProvider;
 export const useContextGlobal = () => useContext(ContextGlobal)
