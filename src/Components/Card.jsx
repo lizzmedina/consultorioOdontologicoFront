@@ -1,24 +1,8 @@
 import { Link } from "react-router-dom";
 
-const Card = ({name, username, id}) => {
+const Card = ({name, username, id, handlerDeleteFav=null, handlerAddOdonto=null}) => {
 
-    const addFav = ()=>{
-    let favoritos = JSON.parse(localStorage.getItem('favorites'));
-
-    if (favoritos) {
-      let odontoNuevo = favoritos.find(favo => favo.id === id )
-      let nuevosFav = []
-      if (odontoNuevo) {
-          nuevosFav = favoritos.filter(fav => fav.id !== id)
-      } else {
-          nuevosFav = [...favoritos, {name, username, id} ];
-        }
-      localStorage.setItem('favorites', JSON.stringify(nuevosFav))
-    } else {
-      localStorage.setItem('favorites', JSON.stringify([{name, username, id}]));
-      }
-  }
-  
+      
 return (
     <div className="card">
       <Link to={`/detail/${id}`}>
@@ -27,9 +11,16 @@ return (
       <h3>{username}</h3>
       <h3>{id}</h3>
       </Link>
-      <button onClick= {addFav} className="favButton">
+      {
+       handlerDeleteFav ? <button onClick= {() => handlerDeleteFav(id) } className="favButton">
+        Delete Fav⭐
+      </button>
+      :
+      <button onClick= {()=> handlerAddOdonto({id, username, name})} className="favButton">
         Add fav ⭐
       </button>
+      }
+      
     </div>
   );
 };

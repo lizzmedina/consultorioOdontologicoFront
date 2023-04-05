@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import { useContextGlobal } from './utils/global.context';
+import { useState } from 'react';
 
 const Navbar = () => {
   
@@ -16,7 +17,7 @@ const Navbar = () => {
       {type: 'dark'
     })
   }
-  
+  console.log(state.theme);
 return (
       <nav className='navbar'>
         <Link to="/"> DH Odonto </Link>
@@ -27,10 +28,12 @@ return (
       <button 
         onClick={handlerChangeTheme}
       >
-        Change theme ☀️/🌒
+        Change theme 
+        {
+          state.theme === 'dark' || !state.theme ? <>🌒</> : <>☀️</>
+        }
       </button>
     </nav>
   )
 }
-
 export default Navbar

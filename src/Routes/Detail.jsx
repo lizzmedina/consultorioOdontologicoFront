@@ -1,20 +1,17 @@
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
-import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useContextGlobal } from "../Components/utils/global.context";
 
 const Detail = () => {
- 
+
   const {odontologos} = useContextGlobal();
   const navigate = useNavigate();
   const { id } = useParams();
 
- const getIdOdonto =() => {
+  const getIdOdonto =() => {
   return odontologos.find(odontologo=> odontologo.id === parseInt(id))
- }
- const odontologoId = getIdOdonto();
- 
+  }
+  const odontologoId = getIdOdonto();
+
   return (
     <div>
       <h1>Detail Dentist {id}</h1>

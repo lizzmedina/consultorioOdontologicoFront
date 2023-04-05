@@ -7,7 +7,6 @@ import Contact from "./Routes/Contact";
 import Favs from "./Routes/Favs";
 import Detail from "./Routes/Detail";
 
-
 function App() {
   return (
       <div className="App">
@@ -18,7 +17,8 @@ function App() {
             <Route path="/contact" element={<Contact/>}/>
             <Route path="/favoritos" element={<Favs/>}/>
             <Route path="/detail/:id" element={<Detail/>}/>
-            <Route path="*" element={<Navigate to= "NotFound"/>} /> 
+            <Route path="*" element={<Navigate to= "/notFound"/>} /> 
+            {/* REVISAR LA RUTA DEL NOTFOUND PORQUE NO FUNCIONA CORRECTAMENTE */}
           </Routes>
           <Footer/>
       </div>
