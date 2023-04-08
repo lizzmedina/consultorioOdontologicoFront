@@ -7,9 +7,8 @@ return (
     <div className="card">
       <Link to={`/detail/${id}`}>
       <img src='./images/doctor.jpg' alt="medico-avatar" className="img-card" />
-      <h3>{name}</h3>
-      <h3>{username}</h3>
-      <h3>{id}</h3>
+      <h2>{name}</h2>
+      <h3>{username}</h3>      
       </Link>
       {
        handlerDeleteFav ? <button onClick= {() => handlerDeleteFav(id) } className="favButton">

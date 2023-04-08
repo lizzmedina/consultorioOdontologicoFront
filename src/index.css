@@ -12,7 +12,7 @@ code {
     monospace;
 }
 .favButton{
-  background-color: #f4a261;
+  background-color: #000000;
   padding: 10px;
   margin: 0px 0px 10px 0px;
   border: none;
@@ -25,10 +25,34 @@ h1{
 }
 
 nav{
-  display: flex;
-  width: 100%;
+  /*display: absolute;
+  
   padding: 1rem;
-  background-color: rgb(247, 211, 165);
+  background-color: rgb(169, 168, 247);*/
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin: 25px;
+  background: #a7a75e;
+  padding: 16px;
+}
+
+nav .menuItems {
+  list-style: none;
+  display: flex;
+}
+nav .menuItems li {
+  margin: 50px; 
+  margin-top: 0px; 
+  margin-bottom: 0px;
+}
+nav .menuItems li a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 24px;
+  font-weight: 600;  
+  position: relative;
+  text-transform: uppercase;
 }
 
 a{
@@ -38,6 +62,7 @@ a{
   text-align: center;
   cursor: pointer;
 }
+
 a:hover{
   color: rgb(120, 120, 120);
 } 
@@ -48,11 +73,12 @@ footer {
   text-align: center;
   padding: 2rem;
   position: relative;
-  bottom: 0;
-  width: 90%;
+  bottom: 0;  
   height: 40px;
   margin-top: 2rem;
-  background-color: rgb(247, 211, 165);
+  background: #a7a75e;
+  color: #000000;
+  font-weight: 600;    
 }
 
 footer > img{
@@ -63,6 +89,15 @@ footer > img{
 footer > p{
   margin: 0;
   padding-top: 0.7rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid;
+}
+footer a:hover {
+  border-bottom: 1px transparent;
 }
 
 form{
@@ -76,14 +111,16 @@ form{
 
 .card{
   display: flex;
-  background-color: rgb(251, 225, 192);
+  background-color:  #a7a75e;
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
   width: 200px;
   padding: 0.5rem 0.5rem 0 0.5rem;
-  border: 0.5px solid rgb(136, 136, 136);
-}
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; 
+ }
 
 .card:hover{
   border: 0.5px solid rgb(206, 217, 142);
@@ -100,6 +137,7 @@ form{
 }
 .img-card{
   width: 100%;
+  border-radius: 100px 100px 100px 100px;
 }
 table {
     border-collapse: collapse;
@@ -122,21 +160,102 @@ tr:nth-child(even) {
 
 
 [data-base-theme="dark"] .App {
-  background-color: #6f6f6f;
+  background-color: #000000;
   color: antiquewhite;
 }
  
 [data-base-theme="dark"] .card {
-  background-color:  #d8c89f;
+  background-color:  #444443;
 }
 
-[data-base-theme="dark"] nav {
-  background-color:  #b7b7b7;
-  color: bisque;
+[data-base-theme="dark"] nav{
+  background-color:  #444443;
+  color: #FFFFFF;
+}
+
+[data-base-theme="dark"] nav .menuItems{
+  list-style: none;
+  display: flex;
+}
+
+[data-base-theme="dark"] nav .menuItems li {
+  margin: 50px; 
+  margin-top: 0px; 
+  margin-bottom: 0px;
+}
+[data-base-theme="dark"] nav .menuItems li a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: 600;  
+  position: relative;
+  text-transform: uppercase;
 }
 
 [data-base-theme="dark"] footer {
-  background-color: #b7b7b7;
-} 
+  background-color: #444443;
+}
+
+[data-base-theme="dark"] button {
+  background-color:  #FFFFFF;
+  border: none;
+  color: #000000;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+/*Important*/
+
+button {
+  background-color:  #000000;
+  border: none;
+  color: #a7a75e;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+a.social {
+  margin: 0 1rem;
+  transition: transform 250ms;
+  display: inline-block;
+}
+
+a.social:hover {
+  transform: translateY(-2px);
+}
+
+a.youtube {
+  color: #eb3223;
+}
+
+a.facebook {
+  color: #4968ad;
+}
+
+a.twitter {
+  color: #49a1eb;
+}
+
+a.instagram {
+  color: black;
+}
+
+a.tiktok{
+  color: #FE2C55;
+}
+
+a.wp{
+  color: #075E54;
+}
 
 

@@ -19,20 +19,19 @@ const Navbar = () => {
   }
   console.log(state.theme);
 return (
-      <nav className='navbar'>
-        <Link to="/"> DH Odonto </Link>
-        <Link to="/"> Home </Link> 
-        <Link to="/contact"> Contact </Link>
-        <Link to="/favoritos"> Favoritos </Link> 
-        
-      <button 
-        onClick={handlerChangeTheme}
-      >
-        Change theme 
-        {
-          state.theme === 'dark' || !state.theme ? <>🌒</> : <>☀️</>
-        }
-      </button>
+      <nav className='navMenu'>
+        <ul className="menuItems">
+          <li><Link to="/"> DH Odonto </Link></li>
+          <li><Link to="/"> Home </Link> </li>
+          <li><Link to="/contact"> Contact </Link></li>
+          <li><Link to="/favoritos"> Favoritos </Link> </li>
+          <li><button onClick={handlerChangeTheme}>
+            Change theme 
+            {
+              state.theme === 'dark' || !state.theme ? <>🌒</> : <>☀️</>
+            }
+          </button></li>
+        </ul>      
     </nav>
   )
 }

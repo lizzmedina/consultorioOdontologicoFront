@@ -1,14 +1,18 @@
-const Footer = () => {
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faYoutube, faFacebook, faTwitter, faInstagram, faTiktok, faWhatsapp} from "@fortawesome/free-brands-svg-icons";
 
-  return (
+const Footer = () => {
+  return ( 
     <footer>
-        <p>Powered by</p>
-        <img src= './images/DH.png' alt='DH-logo' />
-        <img src='./images/ico-instagram.png' alt='instagram-logo'/>
-        <img src='./images/ico-facebook.png'  alt='facebook-logo'/>
-        <img src='./images/ico-whatsapp.png' alt='whatsapp-logo' />
-        <img src='./images/ico-tiktok.png' alt='tiktok-logo' />
-    </footer>
+      <h3>Powered by</h3>
+            <a href="https://www.youtube.com/" className="youtube social"> <FontAwesomeIcon icon={faYoutube} size="2x" /> </a>
+            <a href="https://www.facebook.com/" className="facebook social"> <FontAwesomeIcon icon={faFacebook} size="2x" /> </a>
+            <a href="https://www.twitter.com/" className="twitter social"> <FontAwesomeIcon icon={faTwitter} size="2x" /> </a>
+            <a href="https://www.instagram.com/" className="instagram social"> <FontAwesomeIcon icon={faInstagram} size="2x" /> </a>
+            <a href="https://www.instagram.com/" className="tiktok social"> <FontAwesomeIcon icon={faTiktok} size="2x" /> </a>
+            <a href="https://www.instagram.com/" className="wp social"> <FontAwesomeIcon icon={faWhatsapp} size="2x" /> </a>
+      </footer>   
   )
 }
 

@@ -16,10 +16,24 @@ const Detail = () => {
     <div>
       <h1>Detail Dentist {id}</h1>
       <div className='detailCard'>
-        <h3>{odontologoId.name}</h3>
-        <h4>{odontologoId.email}</h4>
-        <h4>{odontologoId.phone}</h4>
-        <h4>{odontologoId.website}</h4>
+      <table>
+      <thead> 
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Webside</th>
+      </tr>
+      </thead>     
+      <tbody>
+      <tr>
+        <td>{odontologoId?.name}</td>
+        <td>{odontologoId?.email}</td>
+        <td>{odontologoId?.phone}</td>
+        <td>{odontologoId?.website}</td>
+      </tr>
+      </tbody>      
+      </table>
       </div> 
       <button onClick={() => navigate(-1)}>Go back</button>
     </div>
